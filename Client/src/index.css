@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#logo {
+  color: white;
+  justify-content:center;
+  align-items:center;
+  display: inline;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#logo strong {
+  color: rgb(0, 255, 0);
+}
