@@ -23,3 +23,10 @@ code {
 #logo strong {
   color: rgb(0, 255, 0);
 }
+
+#img {
+  display: block;
+  object-fit: scale-down;
+  width: 100%;
+  height: 80vh;
+}

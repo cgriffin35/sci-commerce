@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-scicommerce-dev-104743-authRole",
+      "UnauthRoleArn": "arn:aws:iam::518759307272:role/amplify-scicommerce-dev-104743-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::518759307272:role/amplify-scicommerce-dev-104743-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-scicommerce-dev-104743-deployment",
+      "UnauthRoleName": "amplify-scicommerce-dev-104743-unauthRole",
+      "StackName": "amplify-scicommerce-dev-104743",
+      "StackId": "arn:aws:cloudformation:us-east-2:518759307272:stack/amplify-scicommerce-dev-104743/68e36ce0-52c6-11ec-8abc-02f1e20a53b8",
+      "AmplifyAppId": "d2jz941iv9ymc6"
+    }
+  }
+}
