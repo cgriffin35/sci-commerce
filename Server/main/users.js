@@ -1,5 +1,5 @@
 const usersRouter = require("express").Router();
-const {pool} = require("./db");
+const { pool } = require("./db");
 
 const bcrypt = require("bcrypt");
 const passport = require("passport");
@@ -45,14 +45,14 @@ usersRouter.post("/register", async (req, res, next) => {
         } else {
           pool.query(
             `INSERT INTO users (first_name, last_name, email, user_password, date_created)
-                      VALUES($1, $2, $3, $4, NOW())
-                      RETURNING id;`,
+                      VALUES ($1, $2, $3, $4, NOW())
+                      RETURNING *;`,
             [firstName, lastName, email, hashedPassword],
-            (er, results) => {
-              if(er){
-                res.status(404).send({er})
+            (err2, results) => {
+              if (err2) {
+                res.status(400).send({ err2 });
               } else {
-                res.status(200).send({results})
+                res.status(201).send(results.rows);
               }
             }
           );
@@ -62,25 +62,19 @@ usersRouter.post("/register", async (req, res, next) => {
   }
 });
 
-usersRouter.post('/login', (req, res, next) => {
-  passport.authenticate("local", (err, user) => {
-    if (err) res.status(400).send(err);
-    if(!user) res.status(404).send("No user found.");
-    else{
-      req.logIn(user, err =>{
-        if(err) res.status(400).send(err);
-        res.send("Successfully Authenticated");
-      })
-    }
-  })(req, res, next);
+usersRouter.post("/login", passport.authenticate("local"), (req, res, next) => {
+  if (!req.user) res.status(404).send("No user found.")
+  else {
+    req.logIn(req.user, (err) => {
+      if (err) res.status(400).send(err);
+      res.send("Successfully Authenticated");
+    });
+  }
 });
 
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
+usersRouter.get("/logout", (req, res, next) => {
+  req.logout();
+  res.redirect("/");
+})
 
 module.exports = usersRouter;
-module.exports = checkNotAuthenticated;

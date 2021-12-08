@@ -29,13 +29,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 
 app.use("/api", router);

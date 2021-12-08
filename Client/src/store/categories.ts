@@ -4,13 +4,13 @@ import axios from 'axios';
 interface CategoriesState {
   categories: {
     category: string;
-  },
+  }[],
   loading: boolean,
   error: boolean
 }
 
 // Initial State
-const initialState = {
+const initialState: CategoriesState = {
   categories: [],
   loading: true,
   error: true
@@ -51,5 +51,7 @@ const categoriesSlice = createSlice({
 })
 
 //Selectors
+export const categoriesSelector = (state: any) => state.categories;
 
 //Exports
+export default categoriesSlice.reducer

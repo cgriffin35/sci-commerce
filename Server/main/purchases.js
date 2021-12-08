@@ -1,13 +1,12 @@
 const purchasesRouter = require("express").Router();
 const { pool } = require("./db");
-const checkNotAuthenticated = require("./users");
 
-purchasesRouter.get("/", checkNotAuthenticated, (req, res, next) => {
+purchasesRouter.get("/", (req, res, next) => {
   const { userId } = req.body;
 
   pool.query(
     `SELECT * FROM purchases WHERE user_id = $1
-      INNER JOIN products ON products.id = purchases.product_id;`,
+      ORDER BY date_purchased;`,
     [userId],
     (err, purchases) => {
       if (err) res.status(400).send(err);
@@ -16,13 +15,14 @@ purchasesRouter.get("/", checkNotAuthenticated, (req, res, next) => {
   );
 });
 
-purchasesRouter.post("/", checkNotAuthenticated, (req, res, next) => {
-  const { products, userId, total, card } = req.body;
+purchasesRouter.post("/", (req, res, next) => {
+  const { products, userId, total } = req.body;
 
   pool.query(
-    `INSERT INTO purchases(user_id, products, total_price, card_used, date_purchased)
-      VALUES ($1, $2, $3, $4, NOW());`,
-    [userId, products, total, card],
+    `INSERT INTO purchases(user_id, products, total_price, date_purchased)
+      VALUES ($1, $2, $3, NOW())
+      RETURNING *;`,
+    [userId, products, total],
     (err, purchases) => {
       if (err) res.status(400).send(err);
       else res.status(201).send(purchases.rows);

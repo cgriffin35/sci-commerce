@@ -1,11 +1,11 @@
 const favoritesRouter = require("express").Router();
 const { pool } = require("./db");
-const checkNotAuthenticated = require("./users");
 
-favoritesRouter.get("/", checkNotAuthenticated, (req, res, next) => {
+favoritesRouter.get("/", (req, res, next) => {
   const { userId } = req.body;
   pool.query(
-    `SELECT * FROM favorites WHERE user_id = $1`,
+    `SELECT * FROM favorites WHERE user_id = $1
+      ORDER BY favorited_date ASC`,
     [userId],
     (err, favs) => {
       if (err) res.status(400).send(err);
@@ -14,23 +14,24 @@ favoritesRouter.get("/", checkNotAuthenticated, (req, res, next) => {
   );
 });
 
-favoritesRouter.post("/", checkNotAuthenticated, (req, res, next) => {
+favoritesRouter.post("/", (req, res, next) => {
   const { userId, productId } = req.body;
   pool.query(
     `INSERT INTO favorites(user_id, product_id, favorited_date)
-      VALUES($1, $2, NOW());`,
+      VALUES($1, $2, NOW())
+      RETURNING *;`,
     [userId, productId],
     (err, fav) => {
       if (err) res.status(400).send(err);
-      else res.status(201).send(fav.rows);
+      else res.send(fav.rows);
     }
   );
 });
 
-favoritesRouter.delete("/:id", checkNotAuthenticated, (req, res, next) => {
-  const { id } = req.params;
+favoritesRouter.delete("/", (req, res, next) => {
+  const { userId, productId } = req.body;
 
-  pool.query(`DELETE FROM favorites WHERE id = $1`, [id], (err, fav) => {
+  pool.query(`DELETE FROM favorites WHERE user_id = $1 AND product_id = $2`, [userId, productId], (err, fav) => {
     if (err) res.status(400).send(err);
     else res.status(200).send();
   });

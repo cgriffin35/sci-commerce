@@ -3,10 +3,7 @@ const { pool } = require("./db");
 const bcrypt = require("bcrypt");
 
 function initialize(passport) {
-  console.log("Initialized");
-
   const authenticateUser = (email, password, done) => {
-    console.log(email, password);
     pool.query(
       `SELECT * FROM users WHERE email = $1;`,
       [email],
@@ -14,12 +11,11 @@ function initialize(passport) {
         if (err) {
           res.status(400).send(err);
         }
-        console.log(results.rows);
 
         if (results.rows.length > 0) {
           const user = results.rows[0];
 
-          bcrypt.compare(password, user.password, (err, isMatch) => {
+          bcrypt.compare(password, user.user_password, (err, isMatch) => {
             if (err) {
               console.log(err);
             }
@@ -45,10 +41,10 @@ function initialize(passport) {
     )
   );
 
-  passport.serializeUser((user, done) => done(null, user.id));
+  passport.serializeUser((user, done) => done(null, user.uid));
 
-  passport.deserializeUser((id, done) => {
-    pool.query(`SELECT * FROM users WHERE id = $1;`, [id], (err, results) => {
+  passport.deserializeUser((uid, done) => {
+    pool.query(`SELECT * FROM users WHERE uid = $1;`, [uid], (err, results) => {
       if (err) {
         return done(err);
       }

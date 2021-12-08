@@ -1,5 +1,5 @@
 const productsRouter = require("express").Router();
-const {pool} = require("./db");
+const { pool } = require("./db");
 
 productsRouter.get("/", (req, res, next) => {
   pool.query("SELECT * FROM products;", (err, products) => {
@@ -12,13 +12,17 @@ productsRouter.get("/", (req, res, next) => {
 });
 
 productsRouter.get("/category/:category", (req, res, next) => {
-  const {category} = req.params;
+  const {category} = req.params
 
-  pool.query("SELECT * FROM products WHERE category = $1;", [category], (err, products) => {
-    if(err) res.status(400).send(err)
-    else res.send(products.rows);
-  })
-})
+  pool.query(
+    "SELECT * FROM products WHERE category = $1;",
+    [category],
+    (err, products) => {
+      if (err) res.status(400).send(err);
+      else res.send(products.rows);
+    }
+  );
+});
 
 productsRouter.get("/:id", (req, res, next) => {
   pool.query(

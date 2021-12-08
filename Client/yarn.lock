@@ -3377,6 +3377,17 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@hanreev/types-ol@^3.9.1":
+  "integrity" "sha512-GUCkP7UbnYxyKty0fV52P7qe6qcQuqX7m8HyHLaHqi39KrRDlwetPhU0/GBlr6SWwswme96H4LkZrYUKW2kmog=="
+  "resolved" "https://registry.npmjs.org/@hanreev/types-ol/-/types-ol-3.9.1.tgz"
+  "version" "3.9.1"
+  dependencies:
+    "@types/arcgis-rest-api" "^10.4.5"
+    "@types/geojson" "^7946.0.8"
+    "@types/pbf" "^3.0.2"
+    "@types/rbush" "^3.0.0"
+    "@types/topojson-specification" "^1.0.2"
+
 "@hapi/address@2.x.x":
   "integrity" "sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ=="
   "resolved" "https://registry.npmjs.org/@hapi/address/-/address-2.1.4.tgz"
@@ -4148,6 +4159,11 @@
   "resolved" "https://registry.npmjs.org/@types/anymatch/-/anymatch-1.3.1.tgz"
   "version" "1.3.1"
 
+"@types/arcgis-rest-api@^10.4.5":
+  "integrity" "sha512-MhpTj3aaURIFhK6pBRF50yCHW5TpbeuC1E81juovfNesSOshsQnCzludhpBhIr2pNzplTBlfzrT7RKiLZ5F3Tw=="
+  "resolved" "https://registry.npmjs.org/@types/arcgis-rest-api/-/arcgis-rest-api-10.4.5.tgz"
+  "version" "10.4.5"
+
 "@types/aria-query@^4.2.0":
   "integrity" "sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig=="
   "resolved" "https://registry.npmjs.org/@types/aria-query/-/aria-query-4.2.2.tgz"
@@ -4208,6 +4224,11 @@
   "integrity" "sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw=="
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz"
   "version" "0.0.39"
+
+"@types/geojson@*", "@types/geojson@^7946.0.8":
+  "integrity" "sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA=="
+  "resolved" "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz"
+  "version" "7946.0.8"
 
 "@types/glob@^7.1.1":
   "integrity" "sha512-SEYeGAIQIQX8NN6LDKprLjbrd5dARM5EXsd8GI/A5l0apYI1fGMWgPHSe4ZKL4eozlAyI+doUE9XbYS4xCkQ1w=="
@@ -4307,6 +4328,11 @@
   "resolved" "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz"
   "version" "4.0.0"
 
+"@types/pbf@^3.0.2":
+  "integrity" "sha512-EDrLIPaPXOZqDjrkzxxbX7UlJSeQVgah3i0aA4pOSzmK9zq3BIh7/MZIQxED7slJByvKM4Gc6Hypyu2lJzh3SQ=="
+  "resolved" "https://registry.npmjs.org/@types/pbf/-/pbf-3.0.2.tgz"
+  "version" "3.0.2"
+
 "@types/prettier@^2.0.0":
   "integrity" "sha512-DxZZbyMAM9GWEzXL+BMZROWz9oo6A9EilwwOMET2UVu2uZTqMWS5S69KVtuVKaRjCUpcrOXRalet86/OpG4kqw=="
   "resolved" "https://registry.npmjs.org/@types/prettier/-/prettier-2.2.1.tgz"
@@ -4321,6 +4347,11 @@
   "integrity" "sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug=="
   "resolved" "https://registry.npmjs.org/@types/q/-/q-1.5.4.tgz"
   "version" "1.5.4"
+
+"@types/rbush@^3.0.0":
+  "integrity" "sha512-W3ue/GYWXBOpkRm0VSoifrP3HV0Ni47aVJWvXyWMcbtpBy/l/K/smBRiJ+fI8f7shXRjZBiux+iJzYbh7VmcZg=="
+  "resolved" "https://registry.npmjs.org/@types/rbush/-/rbush-3.0.0.tgz"
+  "version" "3.0.0"
 
 "@types/react-dom@^17.0.0":
   "integrity" "sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q=="
@@ -4388,6 +4419,13 @@
   "version" "5.14.1"
   dependencies:
     "@types/jest" "*"
+
+"@types/topojson-specification@^1.0.2":
+  "integrity" "sha512-SGc1NdX9g3UGDp6S+p+uyG+Z8CehS51sUJ9bejA25Xgn2kkAguILk6J9nxXK+0M/mbTBN7ypMA7+4HVLNMJ8ag=="
+  "resolved" "https://registry.npmjs.org/@types/topojson-specification/-/topojson-specification-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@types/geojson" "*"
 
 "@types/uglify-js@*":
   "integrity" "sha512-sYAF+CF9XZ5cvEBkI7RtrG9g2GtMBkviTnBxYYyq+8BWvO4QtXfwwR6a2LFwCi4evMKZfpv6U43ViYvv17Wz3Q=="
@@ -6322,6 +6360,11 @@
     "on-headers" "~1.0.2"
     "safe-buffer" "5.1.2"
     "vary" "~1.1.2"
+
+"compute-scroll-into-view@^1.0.17":
+  "integrity" "sha512-j4dx+Fb0URmzbwwMUrhqWM2BEWHdFGx+qZ9qqASHRPqvTYdqvWnHg0H1hIbcyLnvgnoNAVMlwkepyqM3DaIFUg=="
+  "resolved" "https://registry.npmjs.org/compute-scroll-into-view/-/compute-scroll-into-view-1.0.17.tgz"
+  "version" "1.0.17"
 
 "concat-map@0.0.1":
   "integrity" "sha1-2Klr13/Wjfd5OnMDajug1UBdR3s="
@@ -12893,6 +12936,13 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
   "version" "6.0.9"
 
+"react-horizontal-scrolling-menu@^2.7.0":
+  "integrity" "sha512-2Fv5rXdrJ146YWwjkCcAzmtUcMIFa6Pl4VTFs0T01eseudDQj0Kl2IxugKKfq3hgCbEV98qU5leGIC2OHXAoxQ=="
+  "resolved" "https://registry.npmjs.org/react-horizontal-scrolling-menu/-/react-horizontal-scrolling-menu-2.7.0.tgz"
+  "version" "2.7.0"
+  dependencies:
+    "smooth-scroll-into-view-if-needed" "^1.1.32"
+
 "react-is@^16.3.2":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -13738,6 +13788,13 @@
     "ajv" "^6.12.5"
     "ajv-keywords" "^3.5.2"
 
+"scroll-into-view-if-needed@^2.2.28":
+  "integrity" "sha512-8LuxJSuFVc92+0AdNv4QOxRL4Abeo1DgLnGNkn1XlaujPH/3cCFz3QI60r2VNu4obJJROzgnIUw5TKQkZvZI1w=="
+  "resolved" "https://registry.npmjs.org/scroll-into-view-if-needed/-/scroll-into-view-if-needed-2.2.28.tgz"
+  "version" "2.2.28"
+  dependencies:
+    "compute-scroll-into-view" "^1.0.17"
+
 "select-hose@^2.0.0":
   "integrity" "sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo="
   "resolved" "https://registry.npmjs.org/select-hose/-/select-hose-2.0.0.tgz"
@@ -14019,6 +14076,13 @@
     "ansi-styles" "^4.0.0"
     "astral-regex" "^2.0.0"
     "is-fullwidth-code-point" "^3.0.0"
+
+"smooth-scroll-into-view-if-needed@^1.1.32":
+  "integrity" "sha512-1/Ui1kD/9U4E6B6gYvJ6qhEiZPHMT9ZHi/OKJVEiCFhmcMqPm7y4G15pIl/NhuPTkDF/u57eEOK4Frh4721V/w=="
+  "resolved" "https://registry.npmjs.org/smooth-scroll-into-view-if-needed/-/smooth-scroll-into-view-if-needed-1.1.32.tgz"
+  "version" "1.1.32"
+  dependencies:
+    "scroll-into-view-if-needed" "^2.2.28"
 
 "snapdragon-node@^2.0.1":
   "integrity" "sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw=="
