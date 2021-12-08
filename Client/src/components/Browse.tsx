@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   productsSelector,
@@ -10,9 +10,6 @@ import { css } from "@emotion/react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
 import { Link, useParams } from "react-router-dom";
 
 const override = css`
@@ -26,8 +23,6 @@ const Browse: React.FC<BrowseProps> = () => {
   const dispatch = useDispatch();
   const allProducts = useSelector(productsSelector);
   const { products } = allProducts;
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   let { category } = useParams();
 
