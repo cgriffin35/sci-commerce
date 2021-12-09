@@ -1,6 +1,7 @@
 {
   "name": "server",
   "version": "0.0.0",
+  "main": "./bin/www",
   "engines": {
     "node": "14.15.4",
     "npm": "8.1.4"
