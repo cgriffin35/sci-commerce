@@ -18,7 +18,7 @@ initializePassport(passport);
 app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extend: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
