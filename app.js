@@ -1,4 +1,3 @@
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -9,6 +8,7 @@ const passport = require("passport");
 const flash = require("express-flash");
 var session = require("cookie-session");
 require("dotenv").config();
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -45,4 +45,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "Client/build/index.html"));
 });
 
+app.listen(PORT, () => {
+  console.log(`Server is starting on port ${PORT}`);
+});
 module.exports = app;
