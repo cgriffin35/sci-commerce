@@ -8,8 +8,8 @@ favoritesRouter.get("/", (req, res, next) => {
       ORDER BY favorited_date ASC`,
     [userId],
     (err, favs) => {
-      if (err) res.status(400).send(err);
-      else res.send(favs.rows);
+      if (err) res.status(400).json(err);
+      else res.json(favs.rows);
     }
   );
 });
@@ -22,8 +22,8 @@ favoritesRouter.post("/", (req, res, next) => {
       RETURNING *;`,
     [userId, productId],
     (err, fav) => {
-      if (err) res.status(400).send(err);
-      else res.send(fav.rows);
+      if (err) res.status(400).json(err);
+      else res.json(fav.rows);
     }
   );
 });
@@ -32,8 +32,8 @@ favoritesRouter.delete("/", (req, res, next) => {
   const { userId, productId } = req.body;
 
   pool.query(`DELETE FROM favorites WHERE user_id = $1 AND product_id = $2`, [userId, productId], (err, fav) => {
-    if (err) res.status(400).send(err);
-    else res.status(200).send();
+    if (err) res.status(400).json(err);
+    else res.status(200).json();
   });
 });
 
@@ -42,8 +42,8 @@ favoritesRouter.get("/populars", (req, res, next) => {
     `SELECT product_id, COUNT(*) as popularity FROM favorites
       GROUP BY product_id
       ORDER BY COUNT(*) DESC;`, [], (err, results) =>{
-        if(err) res.status(400).send(err)
-        else res.send(results.rows);
+        if(err) res.status(400).json(err)
+        else res.json(results.rows);
       }
   )
 });

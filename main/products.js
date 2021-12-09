@@ -4,9 +4,9 @@ const { pool } = require("./db");
 productsRouter.get("/", (req, res, next) => {
   pool.query("SELECT * FROM products;", (err, products) => {
     if (err) {
-      res.status(404).send();
+      res.status(404).json();
     } else {
-      res.send(products.rows);
+      res.json(products.rows);
     }
   });
 });
@@ -18,8 +18,8 @@ productsRouter.get("/category/:category", (req, res, next) => {
     "SELECT * FROM products WHERE category = $1;",
     [category],
     (err, products) => {
-      if (err) res.status(400).send(err);
-      else res.send(products.rows);
+      if (err) res.status(400).json(err);
+      else res.json(products.rows);
     }
   );
 });
@@ -30,9 +30,9 @@ productsRouter.get("/:id", (req, res, next) => {
     [req.params.id],
     (err, product) => {
       if (err) {
-        res.status(404).send();
+        res.status(404).json();
       } else {
-        res.send(product.rows);
+        res.json(product.rows);
       }
     }
   );

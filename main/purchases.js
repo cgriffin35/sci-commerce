@@ -9,8 +9,8 @@ purchasesRouter.get("/", (req, res, next) => {
       ORDER BY date_purchased;`,
     [userId],
     (err, purchases) => {
-      if (err) res.status(400).send(err);
-      else res.send(purchases.rows);
+      if (err) res.status(400).json(err);
+      else res.json(purchases.rows);
     }
   );
 });
@@ -24,8 +24,8 @@ purchasesRouter.post("/", (req, res, next) => {
       RETURNING *;`,
     [userId, products, total],
     (err, purchases) => {
-      if (err) res.status(400).send(err);
-      else res.status(201).send(purchases.rows);
+      if (err) res.status(400).json(err);
+      else res.status(201).json(purchases.rows);
     }
   );
 });

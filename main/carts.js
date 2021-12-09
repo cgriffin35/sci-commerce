@@ -8,8 +8,8 @@ cartsRouter.get("/:userId", (req, res, next) => {
       ORDER BY date_added ASC;`,
     [userId],
     (err, carts) => {
-      if (err) res.status(400).send(err);
-      else res.send(carts.rows);
+      if (err) res.status(400).json(err);
+      else res.json(carts.rows);
     }
   );
 });
@@ -23,8 +23,8 @@ cartsRouter.post("/",(req, res, next) => {
     [userId, productId, quantity, variants],
     (err, cart) => {
       if (err){
-        console.log(err); res.status(400).send(err);
-      } else res.status(201).send(cart.rows);
+        console.log(err); res.status(400).json(err);
+      } else res.status(201).json(cart.rows);
     }
   );
 });
@@ -32,8 +32,8 @@ cartsRouter.post("/",(req, res, next) => {
 cartsRouter.delete("/:id",(req, res, next) => {
   const { id } = req.params;
   pool.query("DELETE FROM carts WHERE id = $1;", [id], (err, cart) => {
-    if (err) res.status(400).send(err);
-    else res.status(200).send();
+    if (err) res.status(400).json(err);
+    else res.status(200).json();
   });
 });
 
@@ -45,8 +45,8 @@ cartsRouter.put("/:id",(req, res, next) => {
       RETURNING *;`,
     [id, quantity],
     (err, cart) => {
-      if (err) res.status(400).send(err);
-      else res.send(cart.rows);
+      if (err) res.status(400).json(err);
+      else res.json(cart.rows);
     }
   );
 });
@@ -58,8 +58,8 @@ cartsRouter.delete('/clear/:userId', (req, res, next) => {
     `DELETE FROM carts WHERE user_id = $1`,
     [userId],
     (err, results) => {
-      if (err) res.status(400).send(err);
-      else res.status(200).send()
+      if (err) res.status(400).json(err);
+      else res.status(200).json()
     }
   )
 })

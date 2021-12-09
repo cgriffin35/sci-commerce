@@ -9,7 +9,7 @@ function initialize(passport) {
       [email],
       (err, results) => {
         if (err) {
-          res.status(400).send(err);
+          res.status(400).json(err);
         }
 
         if (results.rows.length > 0) {

@@ -8,7 +8,7 @@ const session = require("express-session");
 require("dotenv").config();
 
 usersRouter.get("/", (req, res, next) => {
-  res.send(req.user);
+  res.json(req.user);
 });
 
 usersRouter.post("/register", async (req, res, next) => {
@@ -29,7 +29,7 @@ usersRouter.post("/register", async (req, res, next) => {
   }
 
   if (errors.length > 0) {
-    res.status(404).send({ errors });
+    res.status(404).json({ errors });
   } else {
     let hashedPassword = await bcrypt.hash(password, 10);
 
@@ -38,10 +38,10 @@ usersRouter.post("/register", async (req, res, next) => {
       [email],
       (err, users) => {
         if (err) {
-          res.status(404).send({ err });
+          res.status(404).json({ err });
         }
         if (users.rows.length > 0) {
-          res.send(200).send({ message: "Email already in use" });
+          res.json(200).json({ message: "Email already in use" });
         } else {
           pool.query(
             `INSERT INTO users (first_name, last_name, email, user_password, date_created)
@@ -50,9 +50,9 @@ usersRouter.post("/register", async (req, res, next) => {
             [firstName, lastName, email, hashedPassword],
             (err2, results) => {
               if (err2) {
-                res.status(400).send({ err2 });
+                res.status(400).json({ err2 });
               } else {
-                res.status(201).send(results.rows);
+                res.status(201).json(results.rows);
               }
             }
           );
@@ -63,11 +63,11 @@ usersRouter.post("/register", async (req, res, next) => {
 });
 
 usersRouter.post("/login", passport.authenticate("local"), (req, res, next) => {
-  if (!req.user) res.status(404).send("No user found.")
+  if (!req.user) res.status(404).json("No user found.")
   else {
     req.logIn(req.user, (err) => {
-      if (err) res.status(400).send(err);
-      res.send("Successfully Authenticated");
+      if (err) res.status(400).json(err);
+      res.json("Successfully Authenticated");
     });
   }
 });
