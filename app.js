@@ -7,7 +7,7 @@ const cors = require("cors");
 const router = require("./main/api");
 const passport = require("passport");
 const flash = require("express-flash");
-const session = require("express-session");
+var session = require("cookie-session");
 require("dotenv").config();
 
 const app = express();
@@ -25,9 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/Client/build")));
+  app.use(express.static(path.join(__dirname, "Client/build")));
 }
 
 app.use(
