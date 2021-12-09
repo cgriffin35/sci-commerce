@@ -6,10 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './store/index'
 
-import Amplify from "aws-amplify";
-import awsExports from "./aws-exports";
-Amplify.configure(awsExports);
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
