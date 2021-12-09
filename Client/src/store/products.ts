@@ -28,7 +28,11 @@ const initialState: ProductsState = {
 //Action
 export const fetchAllProducts = createAsyncThunk('fetchAllProducts', async ()=> {
   try {
-    const response = await axios.get('/api/products');
+    const response = await axios.get('/api/products', {
+      headers:{
+        'Access-Control-Allow-Origin' : '*',
+      }
+    });
     const products = await response.data;
     return products;
   } catch(error) {
