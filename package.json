@@ -27,5 +27,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.7.1"
   },
-  "proxy": "http://localhost:5000/"
+  "proxy": "http://localhost:5000/",
+  "author": "Carl Griffin III",
+  "license": "ISC"
 }

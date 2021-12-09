@@ -42,7 +42,7 @@ app.use(passport.session());
 app.use("/api", router);
 
 app.get("*", (req, res) => {
-  res.sendFile(__dirname, "Client/build/index.html");
+  res.sendFile(path.join(__dirname, "Client/build/index.html"));
 });
 
 module.exports = app;

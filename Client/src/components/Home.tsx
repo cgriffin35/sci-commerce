@@ -44,7 +44,10 @@ const Home: React.FC<HomeProps> = () => {
     allProducts.loading ||
     !populars ||
     allCategories.loading ||
-    userData.loading || products.length < 40
+    userData.loading ||
+    products.length < 40 ||
+    !products ||
+    products === []
   ) {
     return (
       <>
