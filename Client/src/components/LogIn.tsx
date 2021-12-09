@@ -25,7 +25,6 @@ const LogIn: React.FC<LogInProps> = ({ open, onHide }) => {
     setValidated(true);
     const formData = new FormData(event.target);
     const formDataObj = Object.fromEntries(formData.entries());
-    console.log(formDataObj);
     try {
       dispatch(logUserIn(formDataObj as unknown as UserInputs));
       onHide();

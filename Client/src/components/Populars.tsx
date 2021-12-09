@@ -7,9 +7,6 @@ import { css } from "@emotion/react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 
 const override = css`
@@ -56,16 +53,6 @@ const Populars: React.FC<PopularsProps> = () => {
         }
       `}</style>
       <div className="p-5">
-        <InputGroup className="mb-3">
-          <FormControl
-            placeholder="Search products..."
-            aria-label="Search products"
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-success" id="button-addon2">
-            Search
-          </Button>
-        </InputGroup>
         <Row lg={4}>
           {products.map((item: any) => (
             <Col className="py-3">
