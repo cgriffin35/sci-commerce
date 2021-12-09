@@ -10,7 +10,14 @@ import Product from "./Product";
 import Populars from "./Populars";
 
 import { fetchUser, userSelector } from "../store/users";
-import { fetchCategories } from "../store/categories";
+import { fetchCategories, categoriesSelector } from "../store/categories";
+import { ClipLoader } from "react-spinners";
+import { css } from "@emotion/react";
+
+const override = css`
+  display: block;
+  margin: 42vh auto;
+`;
 
 interface MainProps {}
 
@@ -18,11 +25,16 @@ const Main: React.FC<MainProps> = () => {
   const dispatch = useDispatch();
   const fetchedUser = useSelector(userSelector);
   const {user} = fetchedUser;
+  const fetchedCategories = useSelector(categoriesSelector)
 
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(fetchCategories());
   }, [dispatch]);
+
+  if (fetchedUser.loading || fetchedCategories.loading){
+    return <ClipLoader css={override} color="rgb(0,255,0)" />
+  }
 
   return (
     <>

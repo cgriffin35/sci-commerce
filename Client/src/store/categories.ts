@@ -13,7 +13,7 @@ interface CategoriesState {
 const initialState: CategoriesState = {
   categories: [],
   loading: true,
-  error: true
+  error: false
 }
 
 //Action
