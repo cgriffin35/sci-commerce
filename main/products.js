@@ -4,7 +4,8 @@ const { pool } = require("./db");
 productsRouter.get("/", (req, res, next) => {
   pool.query("SELECT * FROM products;", (err, products) => {
     if (err) {
-      res.status(404).json();
+      console.log(err);
+      res.status(400).json(err);
     } else {
       res.json(products.rows);
     }
@@ -12,7 +13,7 @@ productsRouter.get("/", (req, res, next) => {
 });
 
 productsRouter.get("/category/:category", (req, res, next) => {
-  const {category} = req.params
+  const { category } = req.params;
 
   pool.query(
     "SELECT * FROM products WHERE category = $1;",
