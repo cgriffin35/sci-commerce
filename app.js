@@ -24,7 +24,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "Client/build")));
+}
 
 app.use(
   session({
@@ -36,7 +39,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use("/api", router);
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname, "Client/build/index.html");
+});
 
 module.exports = app;
