@@ -28,7 +28,7 @@ const initialState: ProductsState = {
 //Action
 export const fetchAllProducts = createAsyncThunk('fetchAllProducts', async ()=> {
   try {
-    const response = await axios.get('api/products');
+    const response = await axios.get('/api/products');
     const products = await response.data;
     return products;
   } catch(error) {
@@ -38,7 +38,7 @@ export const fetchAllProducts = createAsyncThunk('fetchAllProducts', async ()=> 
 
 export const fetchProductsByCategory = createAsyncThunk('fetchProductByCategory', async(category:string)=>{
   try {
-    const response = await axios.get(`api/products/category/${category}`)
+    const response = await axios.get(`/api/products/category/${category}`)
     const products = await response.data;
 
     return products;
@@ -49,7 +49,7 @@ export const fetchProductsByCategory = createAsyncThunk('fetchProductByCategory'
 
 export const fetchProductById = createAsyncThunk('fetchProductById', async (id:any)=>{
   try {
-    const response = await axios.get(`api/products/${id}`);
+    const response = await axios.get(`/api/products/${id}`);
     const product = await response.data;
 
     return product[0];
